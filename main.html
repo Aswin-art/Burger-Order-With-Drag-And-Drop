@@ -9,9 +9,9 @@
 		<link href="css/stylesheet.css" rel="stylesheet" media="screen" />
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<link rel=”stylesheet” href=”https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css”>
-		<script src=”https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js”></script>
 		<script src="js/item.js" defer></script>
-		<script src="js/main.js" defer></script>
+		<!-- <script src="js/main.js" defer></script> -->
+		<script src="js/app.js" defer></script>
 	</head>
 	
 	<body>
@@ -32,17 +32,17 @@
 
 						<div class="col-12">
 							<button onClick="">RESET</button>
-							<div id="trash" ondrop=""> 
+							<div id="trash" ondrop="drop(event)" ondragover="dragOver(event)"> 
 								<p>DRAG HERE TO RETURN</p>
 							</div>
 						</div>
 
 						<div class="col-12">
 							<div>Drag your burger bellow</div>
-							<button onClick="">ORDER</button> 
-							<div id="order" ondrop="" class="drop">
-								<!-- <img src="img/bread-bottom.png" alt="" class="top-bread">
-								<img src="img/bread-top.png" alt="" class="bottom-bread"> -->
+							<button onClick="" id="buttonOrder">ORDER</button> 
+							<div id="order" ondrop="drop(event)" ondragover="dragOver(event)">
+								<img src="img/bread-bottom.png" id="breadTop" draggable="false">
+								<img src="img/bread-top.png" id="breadBottom" draggable="false">
 							</div>
 						</div>
 
@@ -53,38 +53,38 @@
 
 					<div id="item" class="col-12">
 						<div class="row">
-							<a class="prev" onclick="">&#10094;</a>
-		 					<a class="next" onclick="">&#10095;</a>
+							<a class="prev" onclick="prevSlide()">&#10094;</a>
+		 					<a class="next" onclick="nextSlide()">&#10095;</a>
 		 				</div>
-
-						<div class="slide-item">
+						 
+						<div class="slide-item" id="bahan">
 							<div class="slide active"> 
-								<div class="desc" data-price="0.5">Vegetable - $0.5</div>
-								<img src="img/vegetable.png" id="2"> 
+								<div class="desc">Vegetable - $0.5</div>
+								<img src="img/vegetable.png" id="2" data-price="0.5" data-name="Vegetable" draggable="true" ondragstart="dragStart(event)"> 
 							</div>
 							<div class="slide"> 
 								<div class="desc" data-price="5">Beef - $5</div>
-								<img src="img/beef.png" id="3"> 
+								<img src="img/beef.png" id="3" data-price="5" data-name="Beef" draggable="true" ondragstart="dragStart(event)"> 
 							</div>
 							<div class="slide"> 
 								<div class="desc" data-price="2">Egg - $2</div>
-								<img src="img/egg.png" id="4"> 
+								<img src="img/egg.png" id="4" data-price="2" data-name="Egg" draggable="true" ondragstart="dragStart(event)"> 
 							</div>
 							<div class="slide"> 
 								<div class="desc" data-price="1">Tomato - $1</div>
-								<img src="img/tomato.png" id="5"> 
+								<img src="img/tomato.png" id="5" data-price="1" data-name="Tomato" draggable="true" ondragstart="dragStart(event)"> 
 							</div>
 							<div class="slide"> 
 								<div class="desc" data-price="2">Cheese - $2</div>
-								<img src="img/cheese.png" id="6"> 
+								<img src="img/cheese.png" id="6" data-price="2" data-name="Cheese" draggable="true" ondragstart="dragStart(event)"> 
 							</div>
 							<div class="slide"> 
 								<div class="desc" data-price="1">Onion - $1</div>
-								<img src="img/onion.png" id="7"> 
+								<img src="img/onion.png" id="7" data-price="1" data-name="Onion" draggable="true" ondragstart="dragStart(event)"> 
 							</div>
 							<div class="slide"> 
 								<div class="desc" data-price="1">Pikle - $1</div>
-								<img src="img/pickle.png" id="8"> 
+								<img src="img/pickle.png" id="8" data-price="1" data-name="Pikle" draggable="true" ondragstart="dragStart(event)"> 
 							</div>
 						</div>
 					</div>

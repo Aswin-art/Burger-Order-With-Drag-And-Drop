@@ -54,6 +54,7 @@ td{
     padding-bottom:100px;
 	align-items:center;
 	min-height:300px;
+	z-index: 999;
 }
 #item{
 	height:230px;
@@ -79,6 +80,10 @@ td{
 
 .slide.active{
 	display: block;
+}
+
+.trash{
+	height: 200px;
 }
 /* end */
 

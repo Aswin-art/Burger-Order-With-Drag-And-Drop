@@ -23,3 +23,7 @@ itemList[5] = new item ('5', 'Tomato', 1);
 itemList[6] = new item ('6', 'Cheese', 2);
 itemList[7] = new item ('7', 'Onion', 1);
 itemList[8] = new item ('8', 'pickle', 1);
+
+itemList.forEach((item, index) => {
+	document.append();
+});

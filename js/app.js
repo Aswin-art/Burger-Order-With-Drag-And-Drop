@@ -41,7 +41,6 @@ function order(dataJson, total) {
 
 function drop(e){
     e.preventDefault();
-
     const breadBottom = document.querySelector('#breadBottom');
     const container = document.querySelector('#order');
     if(e.target == container){
@@ -52,20 +51,28 @@ function drop(e){
         if(src){
             let gambar = document.createElement('img');
             gambar.src = src;
-            gambar.classList.add('order-img');
+            gambar.classList.add('order_img');
             gambar.setAttribute('data-name', name);
             gambar.setAttribute('data-price', price);
+            gambar.addEventListener('dragstart', dragStart(e));
             container.insertBefore(gambar, breadBottom);
         }
 
         saveOrder();
-    }else if(e.target.id == 'trash'){
-        const data = e.dataTransfer.getData('dataImg');
-        console.log(data);
     }else{
         return;
     }
 }
+
+function dropReset(e){
+    console.log(e);
+    // console.log(e.dataTransfer.getData('data-name'));
+}
+
+const cobak = document.querySelectorAll('.order_img');
+cobak.forEach(e => {
+    e.addEventListener('dragstart')
+})
 
 const removeChilds = (parent) => {
     while (parent.lastChild) {
@@ -78,15 +85,16 @@ let dataJson;
 let orderData = [];
 const saveOrder = () => {
 
-    const items = Array.from(document.querySelectorAll('.order-img'));
+    const items = Array.from(document.querySelectorAll('.order_img'));
     const tableDetail = document.querySelector('#detail');
     const tableTotal = document.querySelector('#total');
+    tableDetail.getAttribute('data-name');
     removeChilds(tableDetail);
     let total = 0;
     items.forEach(item => {
         const dataPrice = parseFloat(item.getAttribute('data-price'));
         total += dataPrice;
-        tableDetail.innerHTML += `
+            tableDetail.innerHTML += `
         
         <tr>
         
@@ -133,17 +141,3 @@ const saveOrder = () => {
 
 const buttonOrder = document.querySelector('#buttonOrder');
 buttonOrder.addEventListener('click', order);
-
-
-// const dragOrderedImg = (e) => {
-//     console.log(e);
-// };
-
-// const orderImg = document.querySelectorAll('#order img');
-// for (const img of orderImg) {
-//     img.addEventListener('dragstart', function(e) {
-//         dragOrderedImg(e.srcElement);
-//     });
-// }
-
-// export {order};
